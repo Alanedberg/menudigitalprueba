@@ -1,9 +1,9 @@
 <?php
 // Ajusta a tu entorno
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'menudigital');
-define('DB_USER', 'root');
-define('DB_PASS', ''); // ⚠️ pon tu contraseña si aplica
+define('DB_NAME', 'U245718453_menudigitalpru');
+define('DB_USER', 'u245718453_menudigitalpru');
+define('DB_PASS', 'Menudigitalpru1'); //
 
 // Carpeta de subidas
 define('UPLOAD_DIR', __DIR__ . '/uploads');
