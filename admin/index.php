@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Admin · Menú Digital</title>
-  <base href="/menudigitalprueba/">
+  <base href="/menudigitalprueba/admin/">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
