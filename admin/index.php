@@ -231,6 +231,6 @@
   const API_BASE = '../api';
   const UPLOADS_BASE = '../uploads'; // ← ajusta si tu carpeta de imágenes es otra
 </script>
-<script src="admin/admin.js"></script>
+<script src="/admin/admin.js"></script>
 </body>
 </html>
