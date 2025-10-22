@@ -1,0 +1,243 @@
+/* =======================================================
+   Tema suave fijo (sin darkmode)
+   Colores pastel, contraste cómodo y sin blancos puros
+   ======================================================= */
+:root{
+  /* Base */
+  --bg:        #f2f4f8;   /* fondo general gris-azulado suave */
+  --card:      #fdfcff;   /* tarjetas/offcanvas: casi blanco con tinte */
+  --surface:   #eef2f6;   /* superficies intermedias */
+  --border:    #e5e8f0;   /* bordes sutiles */
+  --text:      #1f2937;   /* texto principal (gris carbón suave) */
+  --text-weak: #57627a;   /* texto tenue */
+  --muted:     #6b7280;   /* textos secundarios */
+  --accent:    #1fbf8f;   /* verde-teal agradable */
+  --accent-2:  #5ec8f2;   /* azul suave para detalles */
+  --danger:    #e35b5b;   /* rojo amable */
+  --pill:      #edf2f7;   /* pill normal */
+  --pill-active:#e6f6f2;  /* pill activo verdoso */
+  --shadow:    0 10px 24px rgba(31, 41, 55, .08);
+
+  --radius: 16px;
+
+  /* Controles carrito */
+  --qty-bg: #eef7ff;
+  --qty-bd: #dbe8ff;
+  --qty-tx: #0b3b6e;
+
+  --wa-bg: #28cf72;
+  --wa-tx: #0b3924;
+}
+
+/* -------- Base -------- */
+html, body { background: var(--bg); color: var(--text); }
+* { box-sizing: border-box; }
+.container { max-width: 1040px; }
+.border-surface { border-color: var(--surface) !important; }
+.text-weak { color: var(--text-weak); }
+.text-total { color: #118f7a; }
+
+/* -------- Header -------- */
+.biz-logo{
+  width:56px; height:56px; object-fit:cover; border-radius:12px;
+  box-shadow: var(--shadow); border: 3px solid rgba(255,255,255,.7);
+}
+.biz-title{ font-weight: 800; letter-spacing: .2px; }
+.biz-subtitle{ color: var(--muted); }
+
+/* -------- Search -------- */
+.input-icon { position: relative; }
+.input-icon > i {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  color: var(--muted); font-size: 1.1rem;
+}
+.input-icon > .input-search { padding-left: 42px; }
+.input-search{
+  background: var(--card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+.input-search::placeholder{ color: #8a93a6; }
+
+/* -------- Pills (categorías) -------- */
+.pill{
+  border:1px solid var(--border); background: var(--pill); color: var(--text-weak);
+  padding:.5rem .85rem; border-radius:999px; cursor:pointer; user-select:none;
+  transition: .18s ease; font-weight:600;
+}
+.pill.active{
+  background: var(--pill-active); color: #0f5f4a; border-color: #bde9db;
+  box-shadow: 0 6px 14px rgba(31,191,143,.12);
+}
+.pill:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+
+/* -------- Grid cards -------- */
+.card-item{
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card-item:hover{ transform: translateY(-2px); box-shadow: 0 14px 28px rgba(31,41,55,.10); }
+
+.img-wrap{ position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+.img-cover{ width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.001); }
+.img-gradient{
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(2,6,23,.38) 100%);
+}
+.img-info{
+  position: absolute; left: 12px; right: 12px; bottom: 10px;
+  display:flex; align-items:end; justify-content:space-between; gap:8px;
+  color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+.img-title{ font-weight: 800; font-size: 1.06rem; }
+.img-price{
+  font-weight: 900; background: rgba(31,191,143,.95);
+  color:#053027; padding:.22rem .52rem; border-radius: 10px; font-size:.95rem;
+}
+.cat-chip{
+  position:absolute; left:12px; top:10px; background: rgba(253,252,255,.92);
+  border:1px solid var(--border); color:#213047; font-size:.74rem;
+  padding:.22rem .5rem; border-radius:999px;
+}
+.card-body{ padding: 12px 14px 16px; }
+.card-desc{ color: var(--text-weak); font-size: .95rem; min-height: 1.2em; }
+
+/* -------- Botones -------- */
+.btn-accent{
+  background: var(--accent); border: none; color: #063a2e; font-weight: 800;
+  border-radius: 999px; padding: .7rem 1rem; box-shadow: 0 10px 20px rgba(31,191,143,.18);
+}
+.btn-accent:hover{ filter: brightness(1.03); }
+
+.btn-outline-light{
+  border-color: var(--border); color: var(--text); background: var(--card);
+}
+.btn-outline-light:hover{ filter: brightness(1.03); }
+
+.btn-soft{
+  background: #e9f6fd; color:#0b4c6e; border: 1px solid #cfe8f7; font-weight:700;
+}
+.btn-soft:hover{ filter: brightness(1.02); }
+
+/* -------- Botón carrito flotante -------- */
+.cart-fab{ position:fixed; right:16px; bottom:18px; z-index:50; }
+.badge-dot{
+  position:absolute; top:-8px; right:-8px; background: var(--danger); color:#fff;
+  border-radius: 999px; padding:.28rem .48rem; font-weight:800;
+  box-shadow: 0 4px 12px rgba(227, 91, 91, .28);
+}
+
+/* -------- Offcanvas (carrito) -------- */
+.offcart{
+  background: var(--card); color: var(--text); border-left: 1px solid var(--border);
+  display:flex; flex-direction:column;
+}
+.offcanvas-header{
+  background: linear-gradient(90deg, #f0fbf6, #eef8ff);
+  border-bottom: 1px solid var(--border) !important;
+}
+.offcanvas-title{ font-weight:800; color:#0e4a3f; }
+
+.offcart .form-control, .offcart textarea{
+  background: var(--card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 12px;
+}
+
+/* -------- Form sections -------- */
+.form-section{
+  background: var(--card); border:1px solid var(--surface); border-radius:14px;
+  padding:12px; margin-bottom:14px; box-shadow: var(--shadow);
+}
+.form-section-title{ font-weight:800; color:#0f7a66; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+
+/* -------- Footer del carrito -------- */
+.offcart-footer{
+  padding: 14px 16px; background: #f6f9fc;
+  border-top: 1px solid var(--border);
+  position: sticky; bottom: 0; z-index: 2; box-shadow: 0 -6px 16px rgba(31,41,55,.06);
+}
+.btn-wa{
+  background: var(--wa-bg); color: var(--wa-tx); border:none; font-weight:800;
+  border-radius: 12px; box-shadow: 0 10px 20px rgba(40,207,114,.20);
+}
+.btn-wa:hover{ filter: brightness(1.03); }
+
+/* =======================================================
+   Cart item — layout mejorado (dos líneas, precio claro,
+   controles compactos y colores suaves)
+   ======================================================= */
+.cart-item{
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "thumb title price"
+    "thumb meta  controls";
+  gap: 8px 12px;
+  align-items: center;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow);
+}
+
+.cart-thumb{
+  grid-area: thumb;
+  width: 64px; height: 64px; border-radius: 12px;
+  object-fit: cover; border:1px solid var(--surface);
+}
+
+.cart-info{ grid-area: title; min-width:0; }
+
+.cart-name{
+  font-weight: 800; font-size: .98rem; line-height:1.15;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; margin: 0;
+}
+
+.cart-meta{
+  grid-area: meta;
+  font-size: .82rem; color: var(--muted); margin-top: -2px;
+}
+
+.cart-price{
+  grid-area: price; text-align: right;
+  font-weight: 900; font-size: 1rem; color:#118f7a; white-space:nowrap;
+}
+
+.cart-controls{
+  grid-area: controls;
+  display: flex; align-items: center; gap: 8px;
+  justify-self: end;
+}
+
+.qty-group{
+  display:flex; align-items:center; gap:8px;
+  background: var(--qty-bg); border:1px solid var(--qty-bd); border-radius:999px;
+  padding: 4px 8px;
+}
+
+.btn-qty{
+  width:34px; height:34px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  border:none; background: var(--qty-bg); color: var(--qty-tx);
+  font-weight:800;
+}
+.btn-qty:hover{ filter: brightness(1.05); }
+
+.qty-value{ min-width: 20px; text-align:center; font-weight:800; }
+
+.btn-remove{
+  width:36px; height:36px; border-radius:999px; border:1px solid #f3c2c2;
+  background:#fdeaea; color:#8e1a1a; display:flex; align-items:center; justify-content:center;
+}
+.btn-remove:hover{ filter: brightness(1.04); }
+
+/* -------- Responsive -------- */
+@media (max-width: 576px){
+  .biz-title{ font-size: 1.25rem; }
+  .img-title{ font-size: 1rem; }
+  .img-price{ font-size: .95rem; }
+}
