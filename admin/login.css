@@ -1,0 +1,107 @@
+/* ===========================================
+   Login - Menú Digital (Estilo bandera RD pastel)
+   =========================================== */
+:root{
+  --bg: #f4f6fa;
+  --brand-blue: #0f58b6;
+  --brand-red: #e23a3a;
+  --text: #1e293b;
+  --muted: #64748b;
+  --card-bg: #ffffff;
+  --border: #dce3ed;
+  --shadow: 0 10px 25px rgba(15, 88, 182, .12);
+}
+
+body {
+  background: linear-gradient(135deg, #eaf3ff 0%, #fff1f1 100%);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Contenedor principal */
+.login-wrapper {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+}
+
+/* Tarjeta del login */
+.login-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 30px 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  animation: fadeIn .6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo y encabezado */
+.login-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(15,88,182,.15);
+  border: 2px solid #fff;
+}
+.text-brand { color: var(--brand-blue); }
+
+/* Botón principal */
+.btn-login {
+  background: var(--brand-blue);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 12px;
+  transition: background .2s ease, transform .1s ease;
+}
+.btn-login:hover {
+  background: var(--brand-red);
+  transform: translateY(-2px);
+}
+
+/* Campos */
+.input-group-text {
+  background: #f5f7fb;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.form-control {
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.form-control:focus {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 0.15rem rgba(15,88,182,0.15);
+}
+
+/* Enlace al menú */
+.btn-link-menu {
+  display: inline-block;
+  color: var(--brand-blue);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.btn-link-menu:hover {
+  color: var(--brand-red);
+  text-decoration: underline;
+}
+
+/* Footer */
+.login-footer {
+  color: var(--muted);
+  opacity: .8;
+}

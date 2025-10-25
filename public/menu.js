@@ -45,6 +45,7 @@ async function init(){
 
   // Carga datos
   var p = await fetch(API + '/platos/obtener.php').then(function(r){ return r.json(); });
+  console.log('🔎 Platos recibidos:', p.data)
   var c = await fetch(API + '/categories/obtener.php').then(function(r){ return r.json(); });
   var s = await fetch(API + '/settings/obtener.php').then(function(r){ return r.json(); });
 
@@ -57,11 +58,13 @@ async function init(){
   DATA.platos = (p && p.data ? p.data : [])
     .filter(function(x){ return String(x.activo) === '1'; })
     .map(function(x){
-      x.categoria_nombre = x.categoria || catMap[String(x.categoria_id)] || 'Sin categoría';
+      x.categoria_nombre = catMap[String(x.categoria_id)] || 'Sin categoría';
       return x;
     });
+    
 
   DATA.settings = s ? s.data : null;
+;
 
   renderHeader();
   renderPills();
@@ -215,22 +218,28 @@ function updateCartUI(){
 
     var row = document.createElement('div');
     row.className = 'cart-item';
-    row.innerHTML =
-      '<img class="cart-thumb" src="'+ thumb +'" alt="">' +
-      '<div class="cart-info">' +
+row.innerHTML =
+  '<img class="cart-thumb" src="'+ thumb +'" alt="">' +
+  '<div class="cart-info">' +
+    '<div class="cart-header">' +
+      '<div>' +
         '<div class="cart-name">'+ escapeHtml(item.nombre) +'</div>' +
-        '<div class="cart-meta">'+ escapeHtml(item.categoria_nombre || '') +'</div>' +
+        '<div class="cart-cat">'+ escapeHtml(item.categoria_nombre || '') +'</div>' +
       '</div>' +
-      '<div class="text-end me-2" style="min-width:90px">' +
-        '<div class="fw-bold">'+ fmt(item.precio * q) +'</div>' +
-        '<small class="text-weak">'+ fmt(item.precio) +' c/u</small>' +
-      '</div>' +
+      '<div class="cart-price">'+ fmt(item.precio * q) +'</div>' +
+    '</div>' +
+    '<div class="cart-unit">'+ fmt(item.precio) +' c/u</div>' +
+    '<div class="cart-footer">' + /* 🔹 ahora todo va debajo */
       '<div class="qty-group">' +
         '<button class="btn-qty" title="Quitar" data-dec="'+ item.id +'"><i class="bi bi-dash-lg"></i></button>' +
         '<span class="fw-bold">'+ q +'</span>' +
         '<button class="btn-qty" title="Agregar" data-inc="'+ item.id +'"><i class="bi bi-plus-lg"></i></button>' +
-        '<button class="btn-qty" title="Eliminar" data-del="'+ item.id +'"><i class="bi bi-trash3"></i></button>' +
-      '</div>';
+        '<button class="btn-qty delete" title="Eliminar" data-del="'+ item.id +'"><i class="bi bi-trash3"></i></button>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+
+
     list.appendChild(row);
   });
 

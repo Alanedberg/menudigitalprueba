@@ -1,0 +1,164 @@
+/* ===========================
+   Admin · Menú Digital (Colores bandera RD)
+   =========================== */
+
+:root {
+  --bg: #f4f6fa;                  /* Fondo claro (suave, no blanco puro) */
+  --text: #1e293b;                /* Texto gris oscuro */
+  --muted: #64748b;               /* Texto secundario */
+  --brand1: #0f58b6;              /* Azul bandera dominicana */
+  --brand2: #e23a3a;              /* Rojo bandera suave */
+  --success: #16a34a;             /* Verde para estado activo */
+  --card-radius: 16px;
+  --shadow: 0 6px 16px rgba(0,0,0,0.05);
+  --shadow-strong: 0 8px 25px rgba(15,88,182,0.18);
+}
+
+/* Fondo general */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.5;
+}
+
+/* Encabezado */
+.app-header {
+  background: linear-gradient(100deg, var(--brand1) 0%, var(--brand2) 100%);
+  color: #fff;
+  border-radius: 18px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-strong);
+}
+.app-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.app-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+/* Botones */
+.btn-primary {
+  background: var(--brand1);
+  border-color: var(--brand1);
+}
+.btn-primary:hover {
+  background: #0d4798;
+  border-color: #0d4798;
+}
+
+.btn-success {
+  background: var(--brand2);
+  border-color: var(--brand2);
+}
+.btn-success:hover {
+  background: #be2f2f;
+  border-color: #be2f2f;
+}
+
+/* Botones con íconos */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+}
+
+/* Tarjetas */
+.card {
+  background: #ffffff;
+  border: 0;
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+}
+.card-header {
+  background-color: transparent;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.card .form-label {
+  font-weight: 500;
+}
+
+/* Tablas */
+.table-wrap {
+  overflow-x: auto;
+}
+.table thead th {
+  white-space: nowrap;
+}
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: #f2f6fb !important;
+}
+
+/* Badges */
+.badge-on {
+  background: var(--success) !important;
+}
+.badge-off {
+  background: #9ca3af !important;
+}
+
+/* Miniaturas */
+.img-thumb {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #e5e7eb;
+  border: 1px solid #d1d5db;
+}
+
+/* Modales */
+.modal-content {
+  border-radius: 16px;
+  background: #ffffff;
+  color: var(--text);
+}
+.modal-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.modal-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Inputs móviles */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Responsive helpers */
+.text-end-on-lg {
+  text-align: left;
+}
+@media (min-width: 992px) {
+  .text-end-on-lg {
+    text-align: right;
+  }
+}
+@media (max-width: 992px) {
+  .app-header {
+    border-radius: 12px;
+  }
+  .btn-sm {
+    padding: .45rem .7rem;
+  }
+  .card .card-header {
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* Efectos suaves */
+.table-hover tbody tr:hover {
+  background-color: #eaf0fa !important;
+  transition: background 0.2s ease;
+}
+button, .btn {
+  transition: all 0.2s ease;
+}
+
+

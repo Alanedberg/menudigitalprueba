@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../database.php';
 $pdo = Database::connect();
 
-$sql = "SELECT p.id, p.categoria_id, c.nombre AS categoria, p.nombre, p.descripcion, p.precio,
+$sql = "SELECT p.id, p.categoria_id, c.nombre AS categoria_nombre, p.nombre, p.descripcion, p.precio,
                p.imagen, p.activo, p.destacado, p.orden, p.fecha_creacion
         FROM platos p
         INNER JOIN categories c ON c.id = p.categoria_id

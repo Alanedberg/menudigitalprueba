@@ -1,57 +1,66 @@
 <?php
-// admin/login.php
 session_start();
-if (!empty($_SESSION['user'])) { header("Location: ./index.php"); exit; }
+if (isset($_SESSION['usuario'])) {
+  header("Location: admin/");
+  exit();
+}
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>Ingresar · Menú Digital</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body{min-height:100dvh;background:#0f172a;background:linear-gradient(135deg,#0f172a,#1f2937);}
-    .card{border:0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .brand{font-weight:800;color:#0ea5e9}
-  </style>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="login.css" rel="stylesheet">
 </head>
-<body class="d-flex align-items-center justify-content-center p-3">
-  <div class="card p-4" style="max-width:420px;width:100%">
-    <h1 class="h4 mb-1 text-center brand">Menú Digital · Admin</h1>
-    <p class="text-center text-muted mb-4">Inicia sesión para continuar</p>
-    <form id="formLogin" class="vstack gap-3">
-      <div>
-        <label class="form-label">Usuario</label>
-        <input type="text" name="usuario" class="form-control form-control-lg" placeholder="admin" required>
+<body>
+  <div class="login-wrapper">
+    <div class="login-card shadow">
+      <div class="text-center mb-4">
+        <img src="../uploads/img_20251022_033945_39be5bb5.png" alt="Logo" class="login-logo mb-2">
+        <h4 class="fw-bold text-brand">Menú Digital</h4>
+        <p class="text-muted small mb-0">Accede al panel de administración</p>
       </div>
-      <div>
-        <label class="form-label">Clave</label>
-        <input type="password" name="clave" class="form-control form-control-lg" placeholder="••••" required>
-      </div>
-      <button class="btn btn-primary btn-lg w-100">Ingresar</button>
-    </form>
-   
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.7/dist/axios.min.js"></script>
-  <script>
-    const API_BASE = '../api';
-    document.getElementById('formLogin').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const fd = new FormData(e.currentTarget);
-      try{
-        const {data} = await axios.post(`${API_BASE}/auth/login.php`, fd);
-        if(data.ok){
-          location.href = './index.php';
-        }else{
-          alert(data.msg || 'Credenciales inválidas');
-        }
-      }catch(err){
-        alert('Error de conexión');
-      }
-    });
-  </script>
+      <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger text-center py-2">
+          <i class="fas fa-exclamation-circle me-1"></i> Usuario o clave incorrectos
+        </div>
+      <?php endif; ?>
+
+      <form action="_auth.php" method="POST" class="mt-3">
+        <div class="mb-3">
+          <label class="form-label">Usuario</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" name="usuario" class="form-control" placeholder="Nombre de usuario" required>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Contraseña</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input type="password" name="clave" class="form-control" placeholder="Tu contraseña" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-login w-100 mt-3">
+          <i class="fas fa-sign-in-alt me-2"></i> Iniciar sesión
+        </button>
+      </form>
+
+      <!-- Enlace al menú público -->
+      <div class="text-center mt-4">
+        <a href="../public/index.php" class="btn-link-menu">
+          <i class="fas fa-utensils me-1"></i> Ir al menú digital
+        </a>
+      </div>
+
+      <footer class="login-footer mt-4 text-center small">
+        © <?= date('Y') ?> DevQuis — Soluciones Tecnológicas
+      </footer>
+    </div>
+  </div>
 </body>
 </html>
